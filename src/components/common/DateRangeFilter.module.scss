@@ -1,0 +1,144 @@
+.darkCalendar,
+.lightCalendar {
+  --rdp-cell-size: 42px;
+
+  :global(.rdp-months) {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 40px;
+  }
+
+  :global(.rdp-month) {
+    width: 320px;
+  }
+
+  :global(.rdp-caption) {
+    padding-bottom: 1rem;
+  }
+
+  :global(.rdp-caption_label) {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  :global(.rdp-weekday) {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  :global(.rdp-day_button) {
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  :global(.rdp-day_button:focus),
+  :global(.rdp-day_button:focus-visible) {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  :global(.rdp-nav_button) {
+    transition: all 0.2s ease;
+    color: #f97316 !important;
+
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  :global(.rdp-nav_button svg) {
+    stroke: #f97316 !important;
+  }
+
+  :global(.rdp-nav_button:hover) {
+    transform: scale(1.08);
+  }
+
+  :global(.rdp-nav_button:hover svg) {
+    stroke: #ea580c !important;
+  }
+
+  :global(.rdp-selected .rdp-day_button) {
+    background: #fb923c !important;
+    color: white !important;
+
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  :global(.rdp-range_start .rdp-day_button) {
+    background: #fb923c !important;
+
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  :global(.rdp-range_end .rdp-day_button) {
+    background: #fb923c !important;
+
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  :global(.rdp-range_middle) {
+    background: rgba(251, 146, 60, 0.18) !important;
+  }
+
+  :global(.rdp-range_middle .rdp-day_button) {
+    background: transparent !important;
+    color: inherit !important;
+  }
+}
+
+.darkCalendar {
+  color: white;
+
+  :global(.rdp-caption_label) {
+    color: white;
+  }
+
+  :global(.rdp-weekday) {
+    color: #9ca3af;
+  }
+
+  :global(.rdp-day_button) {
+    color: white;
+  }
+
+  :global(.rdp-day_button:hover) {
+    background: rgba(251, 146, 60, 0.12);
+  }
+
+  :global(.rdp-day_outside .rdp-day_button) {
+    color: #4b5563;
+  }
+}
+
+.lightCalendar {
+  color: #111827;
+
+  :global(.rdp-caption_label) {
+    color: #111827;
+  }
+
+  :global(.rdp-weekday) {
+    color: #6b7280;
+  }
+
+  :global(.rdp-day_button) {
+    color: #111827;
+  }
+
+  :global(.rdp-day_button:hover) {
+    background: rgba(251, 146, 60, 0.12);
+  }
+
+  :global(.rdp-day_outside .rdp-day_button) {
+    color: #9ca3af;
+  }
+}

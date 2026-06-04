@@ -1,0 +1,45 @@
+import {
+  LayoutDashboard,
+  BarChart3,
+  AlertTriangle,
+  RefreshCcw,
+  User,
+  Wallet,
+  Brain,
+  Mail,
+  Shield,
+  Gavel,
+  Settings,
+  IndianRupee,
+} from "lucide-react";
+export const menuItems = [
+  { name: "Dashboard", icon: LayoutDashboard, pathname: "/dashboard" },
+  { name: "Loan Analytics", icon: BarChart3, pathname: "/loan-analytics" },
+  {
+    name: "Risk Segmentation",
+    icon: AlertTriangle,
+    pathname: "/risk-segmentation",
+  },
+  { name: "AI Follow Up", icon: RefreshCcw, pathname: "/ai-follow-up" },
+  { name: "Borrower Profiles", icon: User, pathname: "/borrower-profile" },
+  { name: "Recovery Task", icon: Mail, pathname: "/recovery-task" },
+  {
+    name: "Loan Disbursement",
+    icon: Wallet,
+    pathname: "/loan-disbursement",
+  },
+  { name: "AI Decision Engine", icon: Brain, pathname: "/ai-decision-engine" },
+  { name: "Agent Productivity", icon: Mail, pathname: "/agent-productvity" },
+  { name: "Loan Master", icon: IndianRupee, pathname: "/loan-master" },
+  {
+    name: "Privilege Management",
+    icon: Shield,
+    pathname: "/privilege-management",
+  },
+  {
+    name: "Legal & Escalation",
+    icon: Gavel,
+    pathname: "/legal-and-escalation",
+  },
+  { name: "Settings", icon: Settings, pathname: "/settings" },
+];

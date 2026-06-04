@@ -1,0 +1,24 @@
+.customSelect {
+  height: 30px !important;
+  min-width: 110px !important;
+  background-color: var(--secondary) !important;
+  border-radius: 6px !important;
+  font-size: 12px !important;
+  color: white !important;
+
+  .MuiOutlinedInput-notchedOutline {
+    border: none !important;
+  }
+
+  .MuiSelect-select {
+    color: white !important;
+    display: flex;
+    align-items: center;
+    padding-right: 32px !important;
+  }
+
+  .MuiSelect-icon {
+    color: white !important;
+    right: 8px !important;
+  }
+}
