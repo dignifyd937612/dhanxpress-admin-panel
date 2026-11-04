@@ -6,10 +6,23 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState("light");
+  const [mounted, setMounted] = useState(false);
 
+  // Get saved theme after component mounts
   useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+
+    setTheme(savedTheme);
+    setMounted(true);
+  }, []);
+
+  // Apply theme whenever it changes
+  useEffect(() => {
+    if (!mounted) return;
+
     document.documentElement.classList.toggle("dark", theme === "dark");
-  }, [theme]);
+    localStorage.setItem("theme", theme);
+  }, [theme, mounted]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));

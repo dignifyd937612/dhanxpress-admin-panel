@@ -28,7 +28,7 @@ export default function TimelineRow({
         </div>
       </div>
 
-      <div className="mb-3 flex h-[38px] flex-1 items-center justify-between rounded bg-[#f5f5f5] px-5">
+      <div className="mb-3 flex h-[38px] flex-1 items-center justify-between rounded bg-[#f5f5f5] px-5 dark:bg-[#252525] dark:text-white">
         <div className="flex items-center gap-4">
           <span className="font-medium">{title}</span>
 

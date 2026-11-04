@@ -8,6 +8,7 @@ import {
   SendHorizonal,
   Globe,
   X,
+  MoreVerticalIcon,
 } from "lucide-react";
 import Image from "next/image";
 import { useRef, useState } from "react";
@@ -18,12 +19,25 @@ import geminiImg from "../../../public/assets/common/logogemini.png";
 import claudeImg from "../../../public/assets/common/logocloude.png";
 
 import CustomDropDown from "@/custom/CustomDropDown";
+import { useTheme } from "@/context/ThemeContext";
+import MoreOptionsDropdown from "@/custom/MoreOptions";
+
+const option = [
+  {
+    key: "clearChat",
+    label: " Clear Chat",
+  },
+  {
+    key: "clearHistory",
+    label: " Clear History",
+  },
+];
 
 export default function AiAssistant() {
   const [message, setMessage] = useState("");
   const [isListening, setIsListening] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState([]);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const theme = useTheme();
 
   const fileInputRef = useRef(null);
 
@@ -73,6 +87,16 @@ export default function AiAssistant() {
     e.target.style.height = `${e.target.scrollHeight}px`;
   };
 
+  const handleAction = (action) => {
+    const actions = {
+      clearChat: () => console.log(action),
+      clearHistory: () => console.log(action),
+      delete: () => console.log(action),
+    };
+
+    actions[action]?.();
+  };
+
   return (
     <div className="relative flex flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-[#2a2a2a] dark:bg-[#1a1a1a]">
       <div className="flex items-center justify-between">
@@ -81,24 +105,12 @@ export default function AiAssistant() {
         </h2>
 
         <div className="relative">
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-700 transition hover:bg-orange-100 hover:text-orange-600 dark:border-[#333] dark:text-white dark:hover:bg-[#252525]"
-          >
-            <MoreVertical size={16} />
-          </button>
-
-          {menuOpen && (
-            <div className="absolute right-0 top-10 z-50 w-40 rounded-xl border border-gray-200 bg-white p-2 shadow-lg dark:border-[#333] dark:bg-[#1a1a1a]">
-              <button className="w-full rounded-lg px-3 py-2 text-left text-sm text-gray-700 transition hover:bg-orange-100 hover:text-orange-600 dark:text-gray-200 dark:hover:bg-[#252525]">
-                Clear Chat
-              </button>
-
-              <button className="w-full rounded-lg px-3 py-2 text-left text-sm text-gray-700 transition hover:bg-orange-100 hover:text-orange-600 dark:text-gray-200 dark:hover:bg-[#252525]">
-                Chat History
-              </button>
-            </div>
-          )}
+          <MoreOptionsDropdown
+            options={option}
+            onAction={handleAction}
+            Icon={MoreVerticalIcon}
+            iconSize={18}
+          />
         </div>
       </div>
 
@@ -188,7 +200,7 @@ export default function AiAssistant() {
             <CustomDropDown
               filters={[claudeImg, geminiImg, chatGptImg]}
               size="extraSmall"
-              theme="light"
+              theme={theme === "dark" ? "dark" : "light"}
               hideFirstOption={false}
             />
           </div>
@@ -196,11 +208,7 @@ export default function AiAssistant() {
           <div className="flex items-center gap-2">
             <button
               onClick={handleMic}
-              className={`flex h-9 w-9 items-center justify-center rounded-full transition-all ${
-                isListening
-                  ? "animate-pulse bg-red-500 text-white"
-                  : "bg-white text-gray-700 dark:bg-[#252525] dark:text-white"
-              }`}
+              className={`flex h-9 w-9 items-center justify-center rounded-full transition-all ${isListening ? "animate-pulse bg-red-500 text-white" : "bg-white text-gray-700 dark:bg-[#252525] dark:text-white"}`}
             >
               <Mic size={15} />
             </button>

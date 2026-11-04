@@ -1,6 +1,36 @@
-import { CircleCheckBig, CircleX, FileText } from "lucide-react";
+import MoreOptionsDropdown from "@/custom/MoreOptions";
+import {
+  CircleCheckBig,
+  CircleX,
+  FileText,
+  MoreVerticalIcon,
+} from "lucide-react";
 
+const option = [
+  {
+    key: "edit",
+    label: "Edit",
+  },
+  {
+    key: "view",
+    label: "View",
+  },
+  {
+    key: "delete",
+    label: "Delete",
+    danger: true,
+  },
+];
 const DocumentsCard = () => {
+  const handleAction = (action) => {
+    const actions = {
+      edit: () => console.log(action),
+      view: () => console.log(action),
+      delete: () => console.log(action),
+    };
+
+    actions[action]?.();
+  };
   return (
     <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:shadow-md dark:border-[#2a2a2a] dark:bg-[#1a1a1a]">
       <div className="flex items-center gap-4">
@@ -28,9 +58,13 @@ const DocumentsCard = () => {
           <CircleX size={22} className="text-red-500" />
         </button>
 
-        <button className="rounded-lg p-2 text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-[#252525] dark:hover:text-white">
-          ⋮
-        </button>
+        <MoreOptionsDropdown
+          options={option}
+          onAction={handleAction}
+          Icon={MoreVerticalIcon}
+          iconSize={16}
+        />
+        <button className="rounded-lg p-2 text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-[#252525] dark:hover:text-white"></button>
       </div>
     </div>
   );

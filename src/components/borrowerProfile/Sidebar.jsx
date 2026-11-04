@@ -5,13 +5,14 @@ import { useState } from "react";
 import {
   Mail,
   Phone,
-  MoreHorizontal,
   MessageSquareText,
   Check,
   Building2,
   BadgeDollarSign,
   CircleCheck,
+  MoreHorizontalIcon,
 } from "lucide-react";
+import MoreOptionsDropdown from "@/custom/MoreOptions";
 
 const activities = [
   {
@@ -34,9 +35,34 @@ const activities = [
   },
 ];
 
+const option = [
+  {
+    key: "edit",
+    label: "Edit",
+  },
+  {
+    key: "view",
+    label: "View",
+  },
+  {
+    key: "delete",
+    label: "Delete",
+    danger: true,
+  },
+];
+
 export default function BorrowerSidebar() {
   const [activeTab, setActiveTab] = useState("activities");
 
+  const handleAction = (action) => {
+    const actions = {
+      edit: () => console.log(action),
+      view: () => console.log(action),
+      delete: () => console.log(action),
+    };
+
+    actions[action]?.();
+  };
   return (
     <aside className="flex min-h-screen w-[320px] flex-col border-r border-gray-200 bg-white dark:border-[#2a2a2a] dark:bg-[#1a1a1a]">
       <div className="flex flex-col items-center px-6 py-8">
@@ -61,9 +87,14 @@ export default function BorrowerSidebar() {
             <Phone size={20} />
           </button>
 
-          <button className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#374151] text-white transition-all hover:scale-105 dark:bg-[#252525]">
-            <MoreHorizontal size={20} />
-          </button>
+          <div className="relative">
+            <MoreOptionsDropdown
+              options={option}
+              onAction={handleAction}
+              Icon={MoreHorizontalIcon}
+              iconSize={20}
+            />
+          </div>
         </div>
 
         <div className="mt-6 flex items-center gap-2">
@@ -79,14 +110,14 @@ export default function BorrowerSidebar() {
         <div className="flex w-full rounded-xl bg-gray-100 p-1 dark:bg-[#252525]">
           <button
             onClick={() => setActiveTab("dealInfo")}
-            className={`flex-1 rounded-lg py-3 text-[15px] font-medium transition-all duration-200 ${activeTab === "dealInfo" ? "bg-white text-gray-900 shadow-sm dark:bg-[#1f1f1f] dark:text-white" : "text-gray-500 dark:text-gray-400"}`}
+            className={`flex-1 rounded-lg py-3 text-[15px] font-medium transition-all duration-200 ${activeTab === "dealInfo" ? "bg-white text-gray-900 shadow-sm dark:bg-orange-500/15 dark:text-orange-400 dark:shadow-none" : "text-gray-500 dark:text-gray-400"}`}
           >
             Deal Info
           </button>
 
           <button
             onClick={() => setActiveTab("activities")}
-            className={`flex-1 rounded-lg py-3 text-[15px] font-medium transition-all duration-200 ${activeTab === "activities" ? "bg-white text-gray-900 shadow-sm dark:bg-[#1f1f1f] dark:text-white" : "text-gray-500 dark:text-gray-400"}`}
+            className={`flex-1 rounded-lg py-3 text-[15px] font-medium transition-all duration-200 ${activeTab === "activities" ? "bg-white text-gray-900 shadow-sm dark:bg-orange-500/15 dark:text-orange-400 dark:shadow-none" : "text-gray-500 dark:text-gray-400"}`}
           >
             Activities
           </button>

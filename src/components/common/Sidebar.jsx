@@ -28,11 +28,10 @@ export default function Sidebar() {
     >
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="absolute -right-4 top-10 z-50 flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-all duration-300 hover:scale-110 hover:bg-orange-500 hover:text-white dark:border-[#2a2a2a] dark:bg-[#252525] dark:text-white dark:shadow-[0_4px_12px_rgba(0,0,0,0.4)] dark:hover:border-orange-500 dark:hover:bg-orange-500"
+        className="absolute -right-4 top-10 z-50 flex h-9 w-9 items-center justify-center rounded-full border border-orange-500 bg-orange-500 text-white shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-all duration-300 hover:scale-110 hover:bg-orange-600 dark:border-orange-500 dark:bg-orange-500 dark:text-white dark:hover:bg-orange-600"
       >
         {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
       </button>
-
       <div className="py-6">
         <div
           className={`flex items-center ${collapsed ? "justify-center" : ""}`}
@@ -65,7 +64,7 @@ export default function Sidebar() {
                 href={item.pathname}
                 className={`flex items-center rounded-xl px-4 py-3 text-sm transition-all duration-200 ${collapsed ? "justify-center" : "gap-3"} ${isActive ? ` bg-orange-100 font-medium text-orange-600 dark:bg-[#2b2116] dark:text-orange-400 ` : ` text-gray-700 hover:bg-gray-100 dark:text-white dark:hover:bg-[#252525] `}`}
               >
-                <Icon size={18} strokeWidth={2} />
+                <Icon size={18} strokeWidth={2} className="sidebar-icon" />
 
                 {!collapsed && <span>{item.name}</span>}
               </Link>

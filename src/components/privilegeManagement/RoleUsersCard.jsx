@@ -1,4 +1,7 @@
 import { CheckCircle, XCircle } from "lucide-react";
+import { useState } from "react";
+import ConfirmationModal from "../common/ConfirmationModal";
+import AssignUserModal from "./AssignUserModal";
 
 const users = [
   {
@@ -20,6 +23,7 @@ const users = [
 ];
 
 export default function RoleUsersCard({ showButton = false }) {
+  const [openAssignUser, SetOpenAssignUser] = useState(false);
   return (
     <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-[#2a2a2a] dark:bg-[#1a1a1a]">
       <div className="border-b border-gray-200 bg-[#fafafa] px-5 py-4 dark:border-[#2a2a2a] dark:bg-[#252525]">
@@ -53,9 +57,18 @@ export default function RoleUsersCard({ showButton = false }) {
         ))}
 
         {showButton && (
-          <button className="mt-3 w-full rounded-lg bg-[#4a4a4a] py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-black dark:bg-orange-500 dark:hover:bg-orange-600">
+          <button
+            onClick={() => SetOpenAssignUser(true)}
+            className="mt-3 is button w-full rounded-lg bg-[#4a4a4a] py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-black dark:bg-orange-500 dark:hover:bg-orange-600"
+          >
             Assign New User
           </button>
+        )}
+
+        {openAssignUser && (
+          <ConfirmationModal title="Assign Users" onClose={SetOpenAssignUser}>
+            <AssignUserModal onClose={SetOpenAssignUser} />
+          </ConfirmationModal>
         )}
       </div>
     </div>

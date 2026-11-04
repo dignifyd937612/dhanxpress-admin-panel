@@ -4,7 +4,7 @@ import ProfileSidebarSection from "@/sections/borrower-profile/ProfileSidebarSec
 
 export default function BorrowerProfile() {
   return (
-    <div className="flex min-h-screen bg-[#F9FAFB]">
+    <div className="flex min-h-screen">
       <ProfileSidebarSection />
       <div className="flex flex-1 flex-col">
         <ProfileHeaderSection />
