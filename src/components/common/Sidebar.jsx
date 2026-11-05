@@ -7,8 +7,8 @@ import Image from "next/image";
 import { useState } from "react";
 
 import collapselogo from "../../../public/assets/common/logo2.png";
-import logo from "../../../public/assets/common/dhan-xpress-logo.png";
-import darkLogo from "../../../public/assets/common/dark-logo.png";
+import dignifyd_logo from "../../../public/assets/common/light-logo.webp";
+import dignifyd_dark_logo from "../../../public/assets/common/dignifyd_dark_logo.webp";
 
 import { menuItems } from "@/utils/common/menuItems";
 import { useTheme } from "@/context/ThemeContext";
@@ -37,7 +37,13 @@ export default function Sidebar() {
           className={`flex items-center ${collapsed ? "justify-center" : ""}`}
         >
           <Image
-            src={collapsed ? collapselogo : theme === "dark" ? darkLogo : logo}
+            src={
+              collapsed
+                ? collapselogo
+                : theme === "dark"
+                  ? dignifyd_dark_logo
+                  : dignifyd_logo
+            }
             alt="logo"
             width={collapsed ? 60 : 250}
             height={80}
