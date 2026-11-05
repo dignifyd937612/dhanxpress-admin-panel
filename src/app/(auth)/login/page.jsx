@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 import { Lock, Mail } from "lucide-react";
-import logo from "../../../../public/assets/common/dhan-xpress-logo.png";
+import logo from "../../../../public/assets/common/dignifyd_dark_logo.webp";
 import bg_img from "../../../../public/assets/login/login-bg.jpg";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
